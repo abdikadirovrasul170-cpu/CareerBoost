@@ -1,11 +1,12 @@
 package kz.careerboost;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
-public class CareerBoostApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(CareerBoostApplication.class, args);
-    }
+import java.util.List;import java.util.Scanner;import static kz.careerboost.CareerBoost.*;
+/** Браузерсіз жұмыс істейтін консольдік мәзір. */
+public class CareerBoostApplication{
+ public static void main(String[]a){try(Scanner s=new Scanner(System.in)){while(true){System.out.println("\n=== CAREERBOOST ===\n1 Builder — профиль\n2 Abstract Factory — рөл\n3 Template Method — түйіндеме\n4 Strategy — сұрыптау\n5 Adapter — импорт\n6 Visitor — есеп\n0 Шығу");System.out.print("Таңдаңыз: ");String c=s.nextLine().trim();try{switch(c){case"1"->profile(s);case"2"->factory(s);case"3"->System.out.println(new StandardResumeChecker().check(sample()));case"4"->strategy();case"5"->System.out.println(new LegacyVacancyAdapter(new ExternalVacancy("Java Developer","OldJobs Ltd","750 000 KZT")).toVacancy());case"6"->visitor();case"0"->{return;}default->System.out.println("Қате таңдау");}}catch(RuntimeException e){System.out.println("Қате: "+e.getMessage());}}}}
+ private static void profile(Scanner s){System.out.print("Аты: ");String n=s.nextLine();System.out.print("Email: ");String e=s.nextLine();System.out.print("Дағдылар: ");List<String>k=java.util.Arrays.stream(s.nextLine().split(",")).map(String::trim).filter(x->!x.isBlank()).toList();System.out.print("Тәжірибе: ");int y=Integer.parseInt(s.nextLine());System.out.println(new ProfileBuilder().name(n).email(e).skills(k).experienceYears(y).build());}
+ private static void factory(Scanner s){System.out.print("1 кандидат / 2 рекрутер: ");UiFactory f=factoryFor(s.nextLine().trim().equals("2")?Role.RECRUITER:Role.CANDIDATE);System.out.println(f.createButton().render());System.out.println(f.createCard().render());}
+ private static Profile sample(){return new ProfileBuilder().name("Расул").email("rasul@example.com").skills(List.of("Java","SQL")).experienceYears(1).build();}
+ private static List<Vacancy> vacancies(){return List.of(new Vacancy("Java Developer","TechKZ",700000),new Vacancy("Backend Developer","IT Group",850000),new Vacancy("QA Engineer","TestLab",500000));}
+ private static void strategy(){VacancySorter x=new VacancySorter(new SalaryDescendingStrategy());System.out.println(x.sort(vacancies()));x.setStrategy(new TitleAscendingStrategy());System.out.println(x.sort(vacancies()));}
+ private static void visitor(){SummaryVisitor v=new SummaryVisitor();List<ReportElement>e=List.of(new ProfileElement(sample()),new VacancyElement(new Vacancy("Backend Developer","IT Group",850000)));e.forEach(x->x.accept(v));v.reports().forEach(System.out::println);}
 }
