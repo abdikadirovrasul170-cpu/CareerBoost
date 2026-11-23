@@ -1,67 +1,28 @@
-# CareerBoost — Java консольдік жоба
+# CareerBoost — Java Console MVP
+CareerBoost — кандидат пен рекрутерге арналған Java 21 консольдік оқу прототипі. Браузер мен веб-сервер қажет емес.
 
-CareerBoost — жұмыс іздеушілерге профиль құруға, түйіндемені талдауға және вакансиялармен жұмыс істеуге арналған оқу жобасы. Жоба Java 21, Spring Boot және Maven негізінде жасалған. Қосымша браузер ашпай, VS Code терминалында жұмыс істейді.
-
-## Қолданылған Design Pattern-дер
-
-1. **Builder** — түйіндемені кезең-кезеңімен құру.
-2. **Abstract Factory** — Candidate және Recruiter рөлдеріне арналған үйлесімді интерфейс компоненттерін құру.
-3. **Template Method** — түйіндемені тексеру/экспорттау алгоритмінің ретін бекіту.
-4. **Strategy** — түйіндемені бағалау тәсілін ауыстыру.
-5. **Adapter** — ескі талдау сервисін жаңа интерфейске бейімдеу.
-6. **Visitor** — түйіндеме элементтеріне қосымша талдау жасау.
-
-## VS Code-та ашу
-
-Алғаш рет жүктеу:
-```bash
-git clone https://github.com/abdikadirovrasul170-cpu/CareerBoost.git
-cd CareerBoost
-code .
-```
-
-Егер жоба бұрыннан компьютерде болса:
-```bash
-git pull origin main
-```
-
-## Терминалдан іске қосу
-
-Java 21 және Maven орнатылған болуы керек.
-
-```bash
-mvn spring-boot:run
-```
-
-Алты паттерннің орындалу нәтижесі VS Code терминалында көрсетіледі. Браузерді ашу қажет емес.
-
-## JUnit 5 тесттерін орындау
-
+## Іске қосу
+JDK 21 және Maven 3.9+ қажет.
 ```bash
 mvn test
+mvn compile
+java -cp target/classes kz.careerboost.CareerBoostApplication
 ```
 
-Тест есебі: `target/surefire-reports/`
+## User Stories және Design Patterns
+| User Story | Функция | Паттерн |
+|---|---|---|
+| US-01, US-02 | Профиль құру және толтыру | Builder |
+| US-03 | Candidate/Recruiter компоненттері | Abstract Factory |
+| US-04, US-05 | Түйіндемені тексеру | Template Method |
+| US-06, US-07 | Вакансияларды сұрыптау | Strategy |
+| US-08, US-09 | Сыртқы вакансияны түрлендіру | Adapter |
+| US-10, US-11 | Профиль және вакансия есебі | Visitor |
+| US-12 | Консоль мәзірі | Барлығы |
 
-## Тест құрылымы
-
-- `BuilderTest.java` — түйіндеме құру және міндетті өрістерді тексеру.
-- `AbstractFactoryTest.java` — UI компоненттерінің құрылуы.
-- `TemplateMethodTest.java` — экспорттау және қате деректерді тексеру.
-- `StrategyTest.java` — бағалау стратегиялары.
-- `AdapterTest.java` — ескі сервисті жаңа интерфейс арқылы пайдалану.
-- `VisitorTest.java` — түйіндеме элементтеріне Visitor қолдану.
-
-Тесттер `src/test/java/kz/careerboost/patterns/` бумасында орналасқан.
-
-## Негізгі құрылым
-
-- `src/main/java/kz/careerboost/CareerBoostApplication.java` — бағдарламаның іске қосылу нүктесі.
-- `src/main/java/kz/careerboost/patterns/PatternDemoRunner.java` — алты паттерннің демонстрациясы.
-- `src/test/java/kz/careerboost/patterns/` — JUnit 5 тесттері.
-- `pom.xml` — Maven конфигурациясы.
-- `SRS.md`, `docs/` — талаптар, User Stories және жобаны жоспарлау құжаттары.
-
-## Ескерту
-
-Бұл — оқу прототипі. Нақты өндірістік жүйеге деректерді тұрақты сақтау, авторизация және толық вакансия басқару функцияларын кейін қосуға болады.
+## VS Code
+1. CareerBoost бумасын ашыңыз.
+2. Extension Pack for Java орнатыңыз.
+3. Terminal → New Terminal ашыңыз.
+4. `mvn test` орындаңыз.
+5. Жоғарыдағы java командасымен іске қосыңыз.
