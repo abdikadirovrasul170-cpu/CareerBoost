@@ -1,6 +1,6 @@
 # GitHub Milestones және Projects тақтасын баптау
 
-Бұл нұсқаулық репозиторий иесіне GitHub веб-интерфейсінде Milestones пен Projects тақтасын жасауға арналған. Қазіргі GitHub байланысында Issue және файл жасау/өзгерту қолжетімді, бірақ Milestone және Projects тақтасын тікелей жасау әрекеттері берілмеген. Сондықтан төмендегі екі баптауды GitHub сайтында қолмен орындау қажет.
+Бұл құжат GitHub Milestones пен Projects тақтасын жоспарлау және тапсырмаларды ұйымдастыру тәртібін сипаттайды. Қазіргі GitHub байланысында Issue және файл жасау/өзгерту қолжетімді, бірақ Milestone және Projects тақтасын тікелей жасау әрекеттері берілмеген. Сондықтан төмендегі екі баптауды GitHub сайтында қолмен орындау қажет.
 
 Репозиторий: https://github.com/abdikadirovrasul170-cpu/CareerBoost
 
@@ -42,11 +42,9 @@ Final кезеңіне Issue #11–#15 міндеттерін қосыңыз: ж
 ## 5. Терминалдан жобаны іске қосу
 VS Code → Terminal → New Terminal:
 ```bash
-git clone https://github.com/abdikadirovrasul170-cpu/CareerBoost.git
-cd CareerBoost
 mvn spring-boot:run
 ```
 
-Қосымша іске қосылғанда Builder, Abstract Factory, Template Method, Strategy, Adapter және Visitor демонстрациялары терминалда көрінеді. Браузерде http://localhost:8080 ашыңыз.
+Қосымша браузер ашпай іске қосылады. Builder, Abstract Factory, Template Method, Strategy, Adapter және Visitor демонстрациялары VS Code терминалында көрсетіледі.
 
-Ескерту: `mvn spring-boot:run` пәрменін орындау үшін JDK 21 және Maven орнатылған болуы керек.
+Ескерту: іске қосу үшін JDK 21 және Maven орнатылған болуы керек.
